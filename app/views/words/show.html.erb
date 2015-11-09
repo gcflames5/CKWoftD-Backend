@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @word.language %>
+</p>
+
+<p>
+  <strong>Chinese:</strong>
+  <%= @word.chinese %>
+</p>
+
+<p>
+  <strong>Korean:</strong>
+  <%= @word.korean %>
+</p>
+
+<p>
+  <strong>Formality:</strong>
+  <%= @word.formality %>
+</p>
+
+<p>
+  <strong>Romanization:</strong>
+  <%= @word.romanization %>
+</p>
+
+<p>
+  <strong>English:</strong>
+  <%= @word.english %>
+</p>
+
+<p>
+  <strong>Termdatejson:</strong>
+  <%= @word.termDateJSON %>
+</p>
+
+<%= link_to 'Edit', edit_word_path(@word) %> |
+<%= link_to 'Back', words_path %>

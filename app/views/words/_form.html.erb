@@ -1,0 +1,45 @@
+<%= form_for(@word) do |f| %>
+  <% if @word.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@word.errors.count, "error") %> prohibited this word from being saved:</h2>
+
+      <ul>
+      <% @word.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :language %><br>
+    <%= f.text_field :language %>
+  </div>
+  <div class="field">
+    <%= f.label :chinese %><br>
+    <%= f.text_field :chinese %>
+  </div>
+  <div class="field">
+    <%= f.label :korean %><br>
+    <%= f.text_field :korean %>
+  </div>
+  <div class="field">
+    <%= f.label :formality %><br>
+    <%= f.text_field :formality %>
+  </div>
+  <div class="field">
+    <%= f.label :romanization %><br>
+    <%= f.text_field :romanization %>
+  </div>
+  <div class="field">
+    <%= f.label :english %><br>
+    <%= f.text_field :english %>
+  </div>
+  <div class="field">
+    <%= f.label :termDateJSON %><br>
+    <%= f.text_field :termDateJSON %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

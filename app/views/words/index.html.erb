@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Words</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Chinese</th>
+      <th>Korean</th>
+      <th>Formality</th>
+      <th>Romanization</th>
+      <th>English</th>
+      <th>Termdatejson</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @words.each do |word| %>
+      <tr>
+        <td><%= word.language %></td>
+        <td><%= word.chinese %></td>
+        <td><%= word.korean %></td>
+        <td><%= word.formality %></td>
+        <td><%= word.romanization %></td>
+        <td><%= word.english %></td>
+        <td><%= word.termDateJSON %></td>
+        <td><%= link_to 'Show', word %></td>
+        <td><%= link_to 'Edit', edit_word_path(word) %></td>
+        <td><%= link_to 'Destroy', word, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Word', new_word_path %>
