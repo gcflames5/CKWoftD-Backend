@@ -57,7 +57,7 @@ class WordsController < ApplicationController
     success = @word.destroy
     respond_to do |format|
       format.html { redirect_to words_url, notice: 'Word was successfully destroyed.' }
-      format.json { render json: ["status", success] }
+      format.json { render json: { status: success }
     end
   end
 
