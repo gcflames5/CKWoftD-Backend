@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  get 'transactions/index'
+  get 'transactions/get_after/:id' => "transactions#get_after"
+
   resources :words
   get '/words/fetch_new/:last_id' => 'words#fetch_new'
   # The priority is based upon order of creation: first created -> highest priority.

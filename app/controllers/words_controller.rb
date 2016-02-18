@@ -28,8 +28,9 @@ class WordsController < ApplicationController
     @word.updated_at = @word.termDateJSON.to_date
     respond_to do |format|
       if @word.save
+        transaction = Transaction.create(type: :add, datetime: DateTime.now, add_id: @word.id.to_s)
         format.html { redirect_to @word, notice: 'Word was successfully created.' }
-        format.json { render json: [@word.id.to_s, @word.created_at] }
+        format.json { render json: {word_id: @word.id.to_s, transaction_id: transaction.id.to_s } }
       else
         format.html { render :new }
         format.json { render json: @word.errors, status: :unprocessable_entity }
@@ -42,6 +43,7 @@ class WordsController < ApplicationController
   def update
     respond_to do |format|
       if @word.update(word_params)
+        transaction = Transaction.create(type: :add, datetime: DateTime.now, edit_id: @word.id.to_s)
         format.html { redirect_to @word, notice: 'Word was successfully updated.' }
         format.json { render :show, status: :ok, location: @word }
       else
@@ -54,10 +56,12 @@ class WordsController < ApplicationController
   # DELETE /words/1
   # DELETE /words/1.json
   def destroy
+    save_id = @word.id.to_s
     success = @word.destroy
+    transaction = Transaction.create(type: :delete, datetime: DateTime.now, destroy_id: save_id)
     respond_to do |format|
       format.html { redirect_to words_url, notice: 'Word was successfully destroyed.' }
-      format.json { render json: { status: success } }
+      format.json { render json: { status: success, transaction_id: transaction.id.to_s } }
     end
   end
 
